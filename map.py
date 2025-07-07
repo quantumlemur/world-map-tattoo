@@ -15,6 +15,8 @@ import numpy as np
 import pandas
 import shapely.geometry as sgeom
 
+LINEWIDTH = 2
+
 
 @dataclasses.dataclass
 class Inset:
@@ -47,7 +49,7 @@ insets = [
 
 # fig, ax = plt.subplots(figsize=(10, 10))  # main map
 
-fig = plt.figure(figsize=(10, 6))
+fig = plt.figure(figsize=(16, 10))
 
 ax = fig.add_subplot(
     1, 1, 1, projection=ccrs.InterruptedGoodeHomolosine(emphasis='land')
@@ -76,7 +78,7 @@ selected_feature = ShapelyFeature(
     ccrs.PlateCarree(),
     edgecolor='black',
     facecolor='none',
-    # linewidth=1.5,
+    linewidth=LINEWIDTH,
 )
 print(selected_feature)
 ax.add_feature(selected_feature)
@@ -115,7 +117,7 @@ for inset in insets:
         ccrs.PlateCarree(),
         edgecolor='black',
         facecolor='none',
-        # linewidth=1.5,
+        linewidth=LINEWIDTH,
     )
     ax_inset.add_feature(selected_feature)
 
